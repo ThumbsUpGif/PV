@@ -17,6 +17,7 @@ function setup() {
     var sketchCanvas = createCanvas(width, height);
     console.log(sketchCanvas);
     sketchCanvas.parent("hero-artwork");
+    //canvas.style('z-index', '1');
 
     // Create apexes that will form the facets
     for (let i = 0; i < 120; i++) {
@@ -76,12 +77,12 @@ function createFacets() {
 function isValidFacet(pn1, pn2, pn3) {
     return (
         dist(pn3.x, pn3.y, pn2.x, pn2.y) < distance &&
-        (bouncers.some(bouncer => 
+        (bouncers.some(bouncer =>
             dist(pn3.x, pn3.y, bouncer.x + sensitivity, bouncer.y) < sensitivity &&
             dist(pn1.x, pn1.y, bouncer.x, bouncer.y) < 100
         ) ||
-        dist(pn3.x, pn3.y, mouseBouncer.x + sensitivity, mouseBouncer.y) < sensitivity &&
-        dist(pn1.x, pn1.y, mouseBouncer.x, mouseBouncer.y) < 100)
+            dist(pn3.x, pn3.y, mouseBouncer.x + sensitivity, mouseBouncer.y) < sensitivity &&
+            dist(pn1.x, pn1.y, mouseBouncer.x, mouseBouncer.y) < 100)
     );
 }
 
@@ -103,17 +104,22 @@ function drawFacet(pn1, pn2, pn3) {
     endShape(CLOSE);
 }
 
+function windowResized() {
+    resizeCanvas(width, height);
+}
+
+
 class Apex {
     constructor() {
         this.x = random(width);
         this.y = random(height);
-        this.r = random(1, 3);
-        this.speed = random(0.08, 0.6);
+        this.r = random(2, 5);
+        this.speed = random(0.04, 0.8);
         this.c = this.randomColor();
     }
 
     randomColor() {
-        const colors = ["#FF2E82", "#E2E269", "#2AF5F8", "#FF9F75"];
+        const colors = ["#FF2E82", "#FF2E82", "#2AF5F8", "#00E1FF", "#E2E269", "#FF9580"];
         return color(random(colors));
     }
 
@@ -139,8 +145,8 @@ class Bouncer {
         this.x = random(width);
         this.y = random(height);
         this.r = 2;
-        this.xspeed = 1.6;
-        this.yspeed = 0.8;
+        this.xspeed = 1;
+        this.yspeed = 0.6;
     }
 
     display() {
