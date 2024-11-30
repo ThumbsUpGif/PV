@@ -1,0 +1,21 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: Roboto, sans-serif;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+   
+}
+
+.hero {
+    background-color: grey;
+    overflow: hidden;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+}
