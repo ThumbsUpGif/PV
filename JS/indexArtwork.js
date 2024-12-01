@@ -7,8 +7,8 @@ let river = [];
 let facet = true;
 let bouncers = [];
 let mouseBouncer;
-let distance = 160;
-let sensitivity = 80;
+let distance = 210;
+let sensitivity = 120;
 
 function setup() {
     var canvasDiv = document.getElementById('hero-artwork');
@@ -20,7 +20,7 @@ function setup() {
     //canvas.style('z-index', '1');
 
     // Create apexes that will form the facets
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 90; i++) {
         river.push(new Apex());
     }
 
@@ -119,7 +119,7 @@ class Apex {
     }
 
     randomColor() {
-        const colors = ["#FF2E82", "#FF2E82", "#2AF5F8", "#00E1FF", "#E2E269", "#FF9580"];
+        const colors = ["#FF2E82", "#FF2E82", "#2AF5F8", "#00E1FF", "#E2E269", "#E2E269", "#FF9580"];
         return color(random(colors));
     }
 
