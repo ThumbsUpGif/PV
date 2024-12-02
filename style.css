@@ -51,40 +51,6 @@ span {
 }
 
 
-
-
-
-.hero-mobile {
-    background-color: yellow;
-    overflow: hidden;
-    z-index: 1;
-    height: 100vh;
-    width: 100vw;
-}
-
-
-.hero-laptop {
-    background-color: purple;
-    overflow: hidden;
-    z-index: 1;
-    height: 100vh;
-    width: 100vw;
-}
-
-
-
-
-
-
-
-/* .p5Canvas {
-    width: 100% !important;
-    height: 100% !important;
-    overflow: auto;
-  } */
-
-
-
 .presentation-box {
     background-color: #fff;
     color: #222;
@@ -103,12 +69,5 @@ span {
     margin: 0;
     padding: 4px 8px 4px 8px;
     /* display: flex; */
-}
-
-.span-mono-1 {
-    color: #bbb;
-    font-weight: 200;
-    overflow-wrap: break-word;
-    /* white-space: nowrap; */
 }
 
