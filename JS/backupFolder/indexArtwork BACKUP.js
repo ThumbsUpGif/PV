@@ -7,17 +7,19 @@ let river = [];
 let facet = true;
 let bouncers = [];
 let mouseBouncer;
-//let distance = 210;
-let distance = [];
+let distance = 210;
 let sensitivity = 120;
-
 
 function setup() {
     var canvasDiv = document.getElementById('hero-artwork');
-    var width = windowWidth;
-    var height = windowHeight;
-    var sketchCanvas = createCanvas(windowWidth, windowHeight);
+    var width = canvasDiv.offsetWidth;
+    var height = canvasDiv.offsetHeight;
+    var sketchCanvas = createCanvas(width, height);
+    console.log(sketchCanvas);
     sketchCanvas.parent("hero-artwork");
+
+    //createCanvas(windowWidth, windowHeight);
+    //canvas.style('z-index', '1');
 
     // Create apexes that will form the facets
     for (let i = 0; i < 90; i++) {
@@ -31,48 +33,11 @@ function setup() {
 
     // Create a mouse-following bouncer
     mouseBouncer = new MouseBouncer();
-
-    if (windowWidth < 600) {
-        distance = 90;
-      } else if (windowWidth < 900) {
-        distance = 140;
-    } else if (windowWidth < 1500) {
-        distance = 210;
-      } else {
-        distance = 240;
-      }
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-
-    // Reposition elements if needed
-    for (let pn1 of river) {
-        if (pn1.x < windowWidth) pn1.x = random(windowWidth);
-        if (pn1.y < windowHeight) pn1.y = random(windowHeight);
-    }
-
-    for (let bouncer of bouncers) {
-        if (bouncer.x < windowWidth) bouncer.x = random(windowWidth);
-        if (bouncer.y < windowHeight) bouncer.y = random(windowHeight);
-    }
-
-    if (windowWidth < 600) {
-        distance = 90;
-      } else if (windowWidth < 900) {
-        distance = 140;
-    } else if (windowWidth < 1500) {
-        distance = 210;
-      } else {
-        distance = 240;
-      }
-
-    // Call draw once to update the sketch immediately after resizing
-    draw();
-
-}
-
-
+  }
 
 function draw() {
     background("#eeeeee");
@@ -96,7 +61,6 @@ function draw() {
     mouseBouncer.update();
     mouseBouncer.display();
 }
-
 
 function createFacets() {
     for (let i = 0; i < river.length - 2; i++) {
@@ -145,11 +109,15 @@ function drawFacet(pn1, pn2, pn3) {
     endShape(CLOSE);
 }
 
+function windowResized() {
+    resizeCanvas(width, height);
+}
+
 
 class Apex {
     constructor() {
-        this.x = random(windowWidth);
-        this.y = random(windowHeight);
+        this.x = random(width);
+        this.y = random(height);
         this.r = random(2, 5);
         this.speed = random(0.04, 0.8);
         this.c = this.randomColor();
@@ -172,15 +140,15 @@ class Apex {
         this.x += this.speed;
         this.y += 0.001;
 
-        if (this.x > windowWidth) this.x = random(-1, -20);
-        if (this.y > windowHeight) this.y = -1;
+        if (this.x > width) this.x = random(-1, -20);
+        if (this.y > height) this.y = -1;
     }
 }
 
 class Bouncer {
     constructor() {
-        this.x = random(windowWidth);
-        this.y = random(windowHeight);
+        this.x = random(width);
+        this.y = random(height);
         this.r = 2;
         this.xspeed = 1;
         this.yspeed = 0.6;
