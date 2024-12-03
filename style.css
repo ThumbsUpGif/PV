@@ -66,8 +66,8 @@ span {
     }
 
     .presentation-box {
-        /* background-color: #fff; */
-        background-color: yellow;
+        background-color: #fff;
+        /* background-color: yellow; */
         color: #222;
         position: absolute;
         z-index: 2;
